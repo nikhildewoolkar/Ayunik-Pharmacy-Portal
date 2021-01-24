@@ -1,0 +1,363 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Pharma</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="{%static 'https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{%static 'fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{%static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{%static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/aos.css' %}">
+
+  <link rel="stylesheet" href="{%static 'css/style.css' %}">
+  
+    
+</head>
+
+<body>
+
+  <div class="site-wrap">
+
+
+    <div class="site-navbar py-2">
+
+      
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="/home/" class="js-logo-clone">Pharma</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li><a href="/home/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/store/">Store</a></li>
+                <li><a href="/adv/">Advertisement</a></li>
+                {%if user.is_authenticated  and user.cuserprofile.utype == "c" %}
+                <li><a href="/profile/">Profile</a></li>
+                <li><a href="/logout/">Logout</a></li>
+                {%elif user.is_authenticated  and user.puserprofile.utype == "p" %}
+                <li><a href="/logout/">Logout</a></li>
+                {% else %}
+                <li class="has-children">
+                  <a href="/signup/">Signup</a>
+                  <ul class="dropdown">
+                    <li><a href="/pharmacysignup/">Pharmacy Signup</a></li>
+                    <li><a href="/clientsignup/">Client Signup</a></li>
+                  </ul>
+                </li>
+                <li class="has-children">
+                  <a href="/login/">Login</a>
+                  <ul class="dropdown">
+                    <li><a href="/pharmacylogin/">Pharmacy Login</a></li>
+                    <li><a href="/clientlogin/">Client login</a></li>
+                  </ul>
+                </li>
+                {% endif %}
+                <li><a href="/contact/">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          {%if user.is_authenticated  and user.cuserprofile.utype == "c" %}
+          <div class="icons">            
+            <a href="/cart/" class="icons-btn d-inline-block bag">
+              <span class="icon-shopping-bag"></span>
+              <span class="number">1+</span>
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="site-blocks-cover" style="background-image: url('{%static 'images/hero_1.jpg' %}');">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+            <div class="site-block-cover-content text-center">
+              <h2 class="sub-title">Effective Medicine, New Medicine Everyday</h2>
+              <h1>Welcome To Pharma</h1>
+              <p>
+                <a href="/store/" class="btn btn-primary px-5 py-3">Shop Now</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row align-items-stretch section-overlap">
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="banner-wrap bg-primary h-100">
+              <a href="{%static '#' %}" class="h-100">
+                <h5>Free <br> Shipping</h5>
+                <p>
+                  Free Home delievry
+                  <strong>From nearest medical store you want</strong>
+                </p>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="banner-wrap h-100">
+              <a href="#" class="h-100">
+                <h5>Season <br> Sale 20% Off</h5>
+                <p>
+                  you can get
+                  <strong>upto 20% sale on special days</strong>
+                </p>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="banner-wrap bg-warning h-100">
+              <a href="{%static '#' %}" class="h-100">
+                <h5>Buy <br> A Gift Card</h5>
+                <p>
+                  shop and collect
+                  <strong>stars and gift cards to get exciting offers</strong>
+                </p>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    
+{% if user.is_authenticated and user.puserprofile.utype == "p" %}
+<center> <h1>First Logout Pharmacy Account<a/h1></center>
+{% else %}
+<div class="site-section bg-light custom-border-bottom" data-aos="fade">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6">
+            <div class="block-16">
+              <figure>
+                <img src="{%static 'images/bg_1.jpg' %}" alt="Image placeholder" class="img-fluid rounded">
+                <a href="{%static 'https://vimeo.com/channels/staffpicks/93951774' %}" class="play-button popup-vimeo"><span
+                    class="icon-play"></span></a>
+    
+              </figure>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+    
+    
+            <div class="site-section-heading pt-3 mb-4">
+              <h2 class="text-black">How We Started</h2>
+            </div>
+            <p>It all started as a Mini project for our MCA course, which eventually transformed into a world wide company established on 28 Sep 2020. Company was established in total lockdown, development of this website was done via code collaboration. We aspire to change the pharmaceutical world with our cutting edge product. .</p>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="site-section bg-light custom-border-bottom" data-aos="fade">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 order-md-2">
+            <div class="block-16">
+              <figure>
+                <img src="{%static 'images/hero_1.jpg' %}" alt="Image placeholder" class="img-fluid rounded">
+                <a href="{%static 'https://vimeo.com/channels/staffpicks/93951774' %}" class="play-button popup-vimeo"><span
+                    class="icon-play"></span></a>
+    
+              </figure>
+            </div>
+          </div>
+          <div class="col-md-5 mr-auto">
+    
+    
+            <div class="site-section-heading pt-3 mb-4">
+              <h2 class="text-black">We Are Trusted Company</h2>
+            </div>
+            <p class="text-black">Customer trust is essential for our business. The level of customer service that we provide has a major impact on customer loyalty and retention. It’s absolutely essential to have dedicated support staff and to set high standards for the speed and quality of your service. Our customers reviews are 100% genuine.</p>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="site-section site-section-sm site-blocks-1 border-0" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="">
+            <div class="icon mr-4 align-self-start">
+              <span class="icon-truck text-primary"></span>
+            </div>
+            <div class="text">
+              <h2>Free Shipping</h2>
+              <p>We do profile Free Shipping to our customers.medical or pharmacy shops delivers the product to your place</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon mr-4 align-self-start">
+              <span class="icon-refresh2 text-primary"></span>
+            </div>
+            <div class="text">
+              <h2>Free Returns</h2>
+              <p>We provide stars and gift card on your purchases.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon mr-4 align-self-start">
+              <span class="icon-help text-primary"></span>
+            </div>
+            <div class="text">
+              <h2>Customer Support</h2>
+              <p>we provide 24/7 support to our customers and deliver medicines on time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="site-section bg-light custom-border-bottom" data-aos="fade">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 site-section-heading text-center pt-4">
+            <h2>The Team</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-6 mb-5">
+    
+            <div class="block-38 text-center">
+              <div class="block-38-img">
+                <div class="block-38-header">
+                  <img src="{%static 'images/nick1.jpg' %}" alt="Image placeholder" class="mb-4">
+                  <h3 class="block-38-heading h4">Nikhil Dewoolkar</h3>
+                  <p class="block-38-subheading">CEO/Co-Founder</p>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 mb-5">
+            <div class="block-38 text-center">
+              <div class="block-38-img">
+                <div class="block-38-header">
+                  <img src="{%static 'images/nick1.jpg' %}" alt="Image placeholder" class="mb-4">
+                  <h3 class="block-38-heading h4">Ayush Sah</h3>
+                  <p class="block-38-subheading">Co-Founder</p>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 mb-5">
+            <div class="block-38 text-center">
+              <div class="block-38-img">
+                <div class="block-38-header">
+                  <img src="{%static 'images/nick1.jpg' %}" alt="Image placeholder" class="mb-4">
+                  <h3 class="block-38-heading h4">Pooja Sangle</h3>
+                  <p class="block-38-subheading">Marketing</p>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 mb-5">
+            <div class="block-38 text-center">
+              <div class="block-38-img">
+                <div class="block-38-header">
+                  <img src="{%static 'images/nick1.jpg' %}" alt="Image placeholder" class="mb-4">
+                  <h3 class="block-38-heading h4">Akash Singh</h3>
+                  <p class="block-38-subheading">Sales Manager</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endif %}
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+
+            <div class="block-7">
+              <h3 class="footer-heading mb-4">About Us</h3>
+              <p></p>
+            </div>
+
+          </div>
+          <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">Quick Links</h3>
+            <ul class="list-unstyled">
+              <li><a href="/home/">home</a></li>
+              <li><a href="/about/">about</a></li>
+              <li><a href="/store/">store</a></li>
+              <li><a href="/contact/">contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <ul class="list-unstyled">
+                <li class="address"><p class="mb-4 text-black">
+								<li>Sardar Patel Institute of Technology</li>
+								<li>Andheri West, Mumbai-400058</li></p></li>
+                <li class="phone">7775808730 & 9029985533</li>
+                <li class="email">nikhil.dewoolkar@spit.ac.in</br>ayush.sah@spit.ac.in</li>
+              </ul>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made by Nikhil and Ayush</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="{%static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{%static 'js/jquery-ui.js' %}"></script>
+  <script src="{%static 'js/popper.min.js' %}"></script>
+  <script src="{%static 'js/bootstrap.min.js' %}"></script>
+  <script src="{%static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{%static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{%static 'js/aos.js' %}"></script>
+
+  <script src="{%static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

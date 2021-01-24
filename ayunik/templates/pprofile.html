@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Pharma</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="{%static 'https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{%static 'fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{%static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{%static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/aos.css' %}">
+   <link rel="stylesheet" href="{%static 'styles.css' %}">
+  <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <link rel="stylesheet" href="{%static 'styles.css' %}">
+
+</head>
+
+<body>
+
+  <div class="site-wrap">
+
+
+    <div class="site-navbar py-2">
+
+      
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="/phome/" class="js-logo-clone">Pharma </a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li><a href="/phome/">Home</a></li>
+                <li><a href="/pabout/">About</a></li>
+                {%if user.is_authenticated and j == "p" %}
+                  <li><a href="/psmanage/">Manage Store</a></li>
+                <li><a href="/ptmanage/">Manage transactions </a></li>
+                <li><a href="/psell/">Advertisement </a></li>
+                <li><a href="/query/">Query</a></li>
+                <li><a href="/pprofile/">Profile</a></li>
+                <li><a href="/logout/">Logout</a></li>
+                {%elif user.is_authenticated and j == "c" %}
+                <li><a href="/logout/">Logout</a></li>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                {% else %}
+                <li><a href="/pharmacysignup/">Signup</a></li>
+                  <li><a href="/pharmacylogin/">Login</a></li>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                {% endif %}
+                
+              </ul>
+            </nav>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+
+    <div class="site-blocks-cover" style="background-image: url('{%static 'images/hero_1.jpg' %}');">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+            <div class="site-block-cover-content text-center">
+              <h2 class="sub-title">Effective Medicine, New Medicine Everyday</h2>
+              <h1>Welcome To Pharma</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <hr>
+    <div>
+      {%if user.is_authenticated and j == "p" %}
+      <form action="/pprofile/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="container">
+    <h1>{{user.username}}</h1>
+    <p>Please Select from following options.</p>
+	<label for="id">Choose relavant option:</label>
+<select id="id" name="id">
+  <option value="0">- - -</option>
+  <option value="1">show profile</option>
+  <option value="2">edit profile</option>
+  <option value="3">change password</option>
+</select>
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Enter</button>
+    </div>
+	</div>
+</form>
+<hr>
+{% if id == 0 %}
+{%if user.is_authenticated and j == "p" %}
+<hr>
+<center><h1>select option to get information....<h1><center>
+<br/>
+<hr>
+{% endif %}
+{% endif %}
+
+{% if id == 1 %}
+{%if user.is_authenticated and j == "p" %}
+<hr>
+<center><h1>Your profile<h1><center>
+
+<hr>
+<hr class="new2"><h3>Pharmacy Name:- {{user.first_name}}<h3></br>
+<hr class="new2"><h3>Owner's Name:- {{user.last_name}}<h3></br>
+<hr class="new2"><h3>User Name:- {{user.username}}<h3></br>
+<hr class="new2"><h3>User Official Email:-{{user.email}}<h3></br>
+<hr class="new2"><h3>Usern Phone Number:-{{user.puserprofile.phoneno}}<h3></br>
+<hr class="new2"><h3>User Address:-{{user.puserprofile.address}}<h3></br>
+<hr class="new2"><h3>User PAN Card No.:-{{user.puserprofile.pan}}<h3></br>
+<hr class="new2"><h3>User Adhar Card No.:-{{user.puserprofile.adhar}}<h3></br>
+<hr class="new2"><h3>User Type:-{{user.puserprofile.utype}}<h3></br>
+<br/>
+<hr>
+{% endif %}
+{% endif %}
+
+{% if id == 2 %}
+{%if user.is_authenticated and j == "p" %}
+<hr>
+<form action="/peditprofile/" method="POST" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="contain">
+	<center><h1>Edit Profile<h1><center>
+    <p>Please fill in this form to edit an account.</p>
+	<hr>
+  <h6>If you want to change Email,PAN card no. and Adhar card no. then send request from Query Section and send email on official mail id from your registered email for verification.</h6>
+	<div class="form-control">
+    </br></br>
+  <label for="fname">Pharmacy Name:-</label>
+    <input type="text"  name="fname" value="{{user.first_name}}" required >
+
+	<label for="lname">Pharmacy Owner's Name:-</label>
+    <input type="text"  name="lname" value="{{user.last_name}}" required >
+
+    <label for="uid">Pharmacy UserName:-</label>
+    <input type="text" name="username" value="{{user.username}}" required readonly> 
+	
+	<label for="email">Pharmacy Official Email:-</label>
+  <input type="email" name="email" value="{{user.email}}" required readonly>
+
+    <label for="phone">Pharmacy Phone No.:-</label>
+    <input type="tel" id="phone" name="phone" value="{{user.puserprofile.phoneno}}" required pattern="[0-9]{10}">   
+	
+	<label for="address">Pharmacy Address:-</label>
+    <input type="text" id="add" name="add" value="{{user.puserprofile.address}}" required >
+
+	<label for="description">PAN Card Details:-</label>
+    <input type="text" id="pan" name="pan" value="{{user.puserprofile.pan}}" required readonly>
+
+	<label for="adhar">Adhar Card Details:-</label>
+    <input type="text" id="adhar" name="adhar" value="{{user.puserprofile.adhar}}" required readonly>
+    <label for="adhar">Enter Valid Password:-</label>
+    <input type="password" id="pass" name="pass"  required>
+
+<br/>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Save</button>
+    </div>
+</form>
+
+<hr>
+{% endif %}
+{% endif %}
+{% if id == 3 %}
+<hr>
+</br>
+<center><h1>Change Password</h1><center>
+<p>Please fill in this form to change password</p>
+
+<h6>Your password can’t be too similar to your other personal information.</h6>
+<h6>Your password must contain at least 8 characters.</h6>
+<h6>Your password can’t be a commonly used password.</h6>
+<h6>Your password can’t be entirely numeric.</h6>
+</br>
+
+<form action="/pchange_password/" method="POST" style="border:1px solid #ccc" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="contain">
+<div class="form-control">
+
+    </br></br>
+    <label for="fname">Old Password:-</label>
+    <input type="password" id="old"  name="old" required >
+
+	<label for="lname">Enter New Password:-</label>
+    <input type="password" id="new1"  name="new1" required>
+
+    <label for="uid">Confirm New Password:-</label>
+    <input type="password" id="new2" name="new2" required >
+<br/>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+
+<div class="clearfix">
+      <button type="reset" class="cancelbtn" id="">Reset</button>
+      <button type="submit" class="signupbtn">Change Password</button>
+    </div>
+</form>
+<hr>
+
+{% endif %}
+
+      </div>
+      {%elif user.is_authenticated and j == "c" %}
+      <div><center> <h1>Pharmacy Login First</h1></center></div>
+      {%else %}
+      <div><center> <h1>Pharmacy Login First</h1></center></div>
+      {% endif %}
+
+<br><br><br><br><br>
+
+
+
+
+    
+  </div>
+
+  <script src="{%static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{%static 'js/jquery-ui.js' %}"></script>
+  <script src="{%static 'js/popper.min.js' %}"></script>
+  <script src="{%static 'js/bootstrap.min.js' %}"></script>
+  <script src="{%static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{%static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{%static 'js/aos.js' %}"></script>
+
+  <script src="{%static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

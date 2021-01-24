@@ -1,0 +1,323 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Pharma</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="{%static 'https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{%static 'fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{%static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{%static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/aos.css' %}">
+   {% comment %} <link rel="stylesheet" href="{%static 'styles.css' %}"> {% endcomment %}
+  <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align:center;
+        }
+        #t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+        #t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        
+        #t01 th {
+            background-color: black;
+            color: white;
+        }
+        button{
+            background-color: white; 
+            color: black; 
+            border: 2px solid #4CAF50;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+  <div class="site-wrap">
+
+
+    <div class="site-navbar py-2">
+
+      
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="/home/" class="js-logo-clone">Pharma</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li><a href="/home/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/store/">Store</a></li>
+                <li><a href="/adv/">Advertisement</a></li>
+                {%if user.is_authenticated  and user.cuserprofile.utype == "c" %}
+                <li><a href="/profile/">Profile</a></li>
+                <li><a href="/logout/">Logout</a></li>
+                {%elif user.is_authenticated  and user.puserprofile.utype == "p" %}
+                <li><a href="/logout/">Logout</a></li>
+                {% else %}
+                <li class="has-children">
+                  <a href="/signup/">Signup</a>
+                  <ul class="dropdown">
+                    <li><a href="/pharmacysignup/">Pharmacy Signup</a></li>
+                    <li><a href="/clientsignup/">Client Signup</a></li>
+                  </ul>
+                </li>
+                <li class="has-children">
+                  <a href="/login/">Login</a>
+                  <ul class="dropdown">
+                    <li><a href="/pharmacylogin/">Pharmacy Login</a></li>
+                    <li><a href="/clientlogin/">Client login</a></li>
+                  </ul>
+                </li>
+                {% endif %}
+                <li><a href="/contact/">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          {%if user.is_authenticated  and user.cuserprofile.utype == "c" %}
+          <div class="icons">            
+            <a href="/cart/" class="icons-btn d-inline-block bag">
+              <span class="icon-shopping-bag"></span>
+              <span class="number">1+</span>
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="site-blocks-cover" style="background-image: url('{%static 'images/hero_1.jpg' %}');">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+            <div class="site-block-cover-content text-center">
+              <h2 class="sub-title">Effective Medicine, New Medicine Everyday</h2>
+              <h1>Welcome To Pharma</h1>
+              <p>
+                <a href="/store/" class="btn btn-primary px-5 py-3">Shop Now</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row align-items-stretch section-overlap">
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="banner-wrap bg-primary h-100">
+              <a href="{%static '#' %}" class="h-100">
+                <h5>Free <br> Shipping</h5>
+                <p>
+                  Free Home delievry
+                  <strong>From nearest medical store you want</strong>
+                </p>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="banner-wrap h-100">
+              <a href="#" class="h-100">
+                <h5>Season <br> Sale 20% Off</h5>
+                <p>
+                  you can get
+                  <strong>upto 20% sale on special days</strong>
+                </p>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="banner-wrap bg-warning h-100">
+              <a href="{%static '#' %}" class="h-100">
+                <h5>Buy <br> A Gift Card</h5>
+                <p>
+                  shop and collect
+                  <strong>stars and gift cards to get exciting offers</strong>
+                </p>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+   
+  <hr>
+  <hr>
+{%if user.is_authenticated  and user.cuserprofile.utype == "c" %}
+<center><h1>Search Medicine<h1><center>
+
+
+<div class="table-head">
+        <table style="width:50%" id="t01">
+            <thead>
+                <tr class="row100 body">
+                    <th class="cell column1">Medicine Name</th>
+                    <th class="cell column2">Pharmacy Name</th>
+                    <th class="cell column4">Pharmacy Address</th>
+                    <th class="cell column3">Price</th>
+                    <th class="cell column6">Add to cart</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row100 body">
+                {% for v in v %}
+                <form action="/cartadd/" method="POST" style="border:1px solid #ccc">
+                {% csrf_token %}
+                    <td class="cell column1"> <input type="text"  name="mname"  value="{{v.medname}}" readonly required ></td>
+                    <td class="cell column2"><input type="text"  name="pname"  value="{{v.pname}}" readonly required ></td>
+                    <td class="cell column4"><input type="text"  name="padd"  value="{{v.add}}" readonly required ></td>
+                    <td class="cell column3"><input type="text"  name="price"  value="{{v.medprice}}" readonly required ></td>
+                    {% comment %} onclick="location.href='{% url 'cartadd' %}'" {% endcomment %}
+                    {% comment %} <td><input onclick="set()" type="button" class="btn btn-primary" value = "Add to Cart"/></td> {% endcomment %}
+                    <td class="cell column6"><button type="submit">Add to cart</button></td>
+                    </form>
+                    {% comment %} {% block javascript %}
+                    <script>
+                    function set(){
+                        window.location.href = "{% url 'cartadd' %}" + "?medname="+{{v.medname}}+ "?pname="+{{v.pname}}+ "?add="+{{v.add}}+ "?medprice="+{{v.medprice}};
+                    }
+                    </script>
+                    {% endblock %} {% endcomment %}
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <hr>
+<form action="/storesearchs/" method="POST">
+    {% csrf_token %}
+  <label for="fname">search by Medicine</label>
+    <input type="text"  name="mname"  required >
+<br/>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+      <button type="reset" >Reset</button>
+      <button type="submit">Save</button>
+</form>
+<hr>
+<form action="/storesearch/" method="POST">
+    {% csrf_token %}
+  <label for="fname">search by Pharmacy</label>
+    <select id="id" name="id">
+{% for x in x %}
+  <option value="{{x.username}}">{{x.pname}}({{x.address}})</option>
+ {% endfor %} 
+</select>
+<br/>
+{% for message in messages %}
+	<h6>{{message}}</h6>
+	{% endfor %}
+      <button type="reset" >Reset</button>
+      <button type="submit">Save</button>
+</form>
+<hr>
+{% elif user.is_authenticated and user.puserprofile.utype == "p" %}
+<center> <h1>Client Login First</h1></center>
+{%else %}
+<center> <h1>Client Login First</h1></center>
+{% endif %}
+  <hr>
+  <hr>
+   
+</div>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+
+            <div class="block-7">
+              <h3 class="footer-heading mb-4">About Us</h3>
+              <p></p>
+            </div>
+
+          </div>
+          <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">Quick Links</h3>
+            <ul class="list-unstyled">
+              <li><a href="/home/">home</a></li>
+              <li><a href="/about/">about</a></li>
+              <li><a href="/store/">store</a></li>
+              <li><a href="/contact/">contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <ul class="list-unstyled">
+                <li class="address"><p class="mb-4 text-black">
+								<li>Sardar Patel Institute of Technology</li>
+								<li>Andheri West, Mumbai-400058</li></p></li>
+                <li class="phone">7775808730 & 9029985533</li>
+                <li class="email">nikhil.dewoolkar@spit.ac.in</br>ayush.sah@spit.ac.in</li>
+              </ul>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made by Nikhil and Ayush</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="{%static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{%static 'js/jquery-ui.js' %}"></script>
+  <script src="{%static 'js/popper.min.js' %}"></script>
+  <script src="{%static 'js/bootstrap.min.js' %}"></script>
+  <script src="{%static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{%static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{%static 'js/aos.js' %}"></script>
+
+  <script src="{%static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
