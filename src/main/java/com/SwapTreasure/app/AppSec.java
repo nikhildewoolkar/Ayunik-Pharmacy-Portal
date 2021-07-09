@@ -22,8 +22,8 @@ public class AppSec extends WebSecurityConfigurerAdapter{
 	@Override
 	protected UserDetailsService userDetailsService() {
 		List<UserDetails> users = new ArrayList<>();
-		users.add(User.withDefaultPasswordEncoder().username("amar14").password("12345").roles("USER").build());
-		users.add(User.withDefaultPasswordEncoder().username("nancy123").password("12345").roles("USER").build());
+		users.add(User.withDefaultPasswordEncoder().username("nikhildewoolkar29").password("12345").roles("USER").build());
+		users.add(User.withDefaultPasswordEncoder().username("nikhildewoolkar29").password("12345").roles("USER").build());
 		users.add(User.withDefaultPasswordEncoder().username("admin").password("123").roles("USER").build());
 		return new InMemoryUserDetailsManager(users);
 	}
