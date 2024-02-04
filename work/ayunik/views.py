@@ -7,7 +7,7 @@ import datetime
 import os
 from django.conf import settings
 from django.core.mail import send_mail 
-import numpy as np
+import numpy as npmf
 from django.contrib import messages
 from subprocess import check_output, CalledProcessError,STDOUT
 from django.contrib.auth.models import User, auth
